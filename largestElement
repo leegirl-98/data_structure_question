@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int getlargest(int arr1[],int n)
+{
+    int res=0;
+    for(int i=0;i<n;i++)
+    {
+        if(arr1[i]>arr1[res])
+        {
+            res=i;
+        }
+    }
+    return arr1[res];
+    
+}
+int main()
+{
+    int arr1[]={10,5,20,8};
+    int n=sizeof(arr1)/sizeof(arr1[0]);
+    cout<<getlargest(arr1,n);
+    return 0;
+}
