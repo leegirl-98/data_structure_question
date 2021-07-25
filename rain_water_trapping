@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int arr[]={3,0,0,2,0,4};
+    int n=6;
+    int mxl[n];
+    int mxr[n];  
+    mxl[0]=arr[0];
+    mxr[n-1]=arr[n-1];
+    int water[n];
+    int sum=0;
+    for(int i=1;i<n;i++)
+    {
+        mxl[i]=max(mxl[i-1],arr[i]);
+    }
+    for(int i=n-2;i>=0;i--)
+    {
+        mxr[i]=max(mxr[i+1],arr[i]);
+    }
+    for(int i=0;i<n;i++)
+    {
+        water[i]=min(mxl[i],mxr[i])-arr[i];
+    }
+    for(int i=0;i<n;i++)
+    {
+        sum+=water[i];
+    }
+    cout<<sum;
+
+}
