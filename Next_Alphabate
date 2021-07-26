@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+char nextalphabate(vector<char> &alphabate,char k)
+{
+    int n=alphabate.size();
+    if(k>=alphabate[n-1])
+    {
+        return alphabate[0];
+    }
+    int l=0,r=alphabate.size()-1;
+    int ans=-1;
+    while(l<=r)
+    {
+        int mid=l+((r-l)/2);
+        if(alphabate[mid]>k)
+        {
+            r=mid-1;
+            ans=mid;
+            
+        }
+        else
+        {
+            l=mid+1;
+        }
+            
+    }
+    return alphabate[ans];
+
+}
+int main()
+{
+    vector<char> letters{'A','K','S'};
+    char k='L';
+    char result=nextalphabate(letters,k);
+    cout<<result<<endl;
+    return 0;
+}
