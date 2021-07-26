@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int floorf(int arr[],int start,int end,int ele)
+{
+    while(start<=end)
+    {
+        int mid=start+end-start/2;
+        if(ele<arr[mid])
+        {
+            return floorf(arr,start,end-1,ele);
+        }
+        return floorf(arr,mid+1,end,ele);
+    }
+}
+int main()
+{
+    int arr[]={1,2,3,4,8,10,10,18,19};
+    int n=9;
+    int ele=5;
+    int start=0;
+    int end=n-1;
+    cout<<floorf(arr,start,end,ele);
+}
