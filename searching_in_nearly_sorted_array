@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int bsearch(int arr[],int start,int end,int key)
+{
+    
+    while(start<=end)
+    {
+        int mid= start + ((end-start)/2);
+        if(key==arr[mid])
+        {
+            return mid;
+        }
+        if (mid>start && arr[mid-1]==key)
+        {
+            return (mid-1);
+        }
+        if (mid<end && arr[mid+1]==key)
+        {
+            return (mid+1);
+        }
+        if(key<arr[mid])
+        {
+            return bsearch(arr,start,mid-2,key);
+        }
+        else
+        {
+            return bsearch(arr,mid+2,end,key);
+        }   
+    }  
+    return -1;     
+}
+int main()
+{
+    int arr[]={5,10,30,20,40};
+    int n=sizeof(arr)/sizeof(arr[0]);
+    int start=0;
+    int end=n-1;
+    int ans=bsearch(arr,start,end,20);
+    if(ans == -1)
+    {
+        cout<<"element is nt present";
+    }    
+    cout<<ans;
+    return 0;
+}
